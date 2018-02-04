@@ -1,0 +1,35 @@
+pipeline {
+	agent any
+	environment {
+     	def POM = readMavenPom file: 'back-end/pom.xml'
+     	def VERSION = "$POM.version"
+   	}
+	stages {
+		stage("compile") {
+			steps {
+				echo "Building and Archiving $VERSION ..."
+				withMaven(globalMavenSettingsConfig: '29fe7cc5-79cf-40d4-87e3-323b8037af91', jdk: 'JDK 8', maven: 'maven 3.3.9')
+				{
+    				sh 'mvn clean compile'
+				}
+				
+			}
+		}
+		
+		stage ("test") {
+        	steps{
+	        	withMaven(maven: 'maven 3.3.9') {
+	    				sh 'mvn test'
+				}
+        	}
+		}
+		stage ("deploy") {
+        	steps{
+	        	withMaven(maven: 'maven 3.3.9') {
+	    				sh 'mvn deploy'
+				}
+        	}
+		}
+	}
+	
+}

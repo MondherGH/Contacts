@@ -21,7 +21,6 @@ public class DemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... arg0) throws Exception {
-		DateFormat df= new SimpleDateFormat("dd/MM/yyyy");
 		contactRepository.findAll().forEach(c->{
         	System.out.println(c.getNom());
         	

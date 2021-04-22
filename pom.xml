@@ -8,7 +8,7 @@
 	<artifactId>odicee-core</artifactId>
 	<name>odicee core</name>
 	<properties>
-		<flying-saucer.version>9.1.6</flying-saucer.version>
+		<flying-saucer.version>9.1.21</flying-saucer.version>
 		<netflix.feign.version>8.18.0</netflix.feign.version>
 	</properties>
 	<dependencyManagement>
